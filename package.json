@@ -1,5 +1,5 @@
 {
-  "name": "e-archieve",
+  "name": "e-regdum",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -9,14 +9,26 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@nextui-org/date-picker": "^2.3.7",
+    "firebase": "^11.0.2",
+    "flowbite": "^2.5.2",
+    "flowbite-react": "^0.10.2",
+    "formik": "^2.4.6",
+    "next": "^15.0.4",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-    "next": "15.0.4"
+    "react-icons": "^5.4.0",
+    "react-toastify": "^10.0.6",
+    "xlsx": "^0.18.5",
+    "yup": "^1.5.0"
   },
   "devDependencies": {
-    "postcss": "^8",
-    "tailwindcss": "^3.4.1",
+    "autoprefixer": "^10.4.20",
+    "css-loader": "^7.1.2",
     "eslint": "^8",
-    "eslint-config-next": "15.0.4"
+    "eslint-config-next": "15.0.4",
+    "postcss": "^8.4.49",
+    "postcss-loader": "^8.1.1",
+    "tailwindcss": "^3.4.16"
   }
 }
