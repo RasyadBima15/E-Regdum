@@ -40,7 +40,43 @@ const Table = ( {nama_instansi, surat, isLoading} ) => {
   };
 
   if (!surat || surat.length === 0) {
-    return <div>No data available</div>; // Tampilkan pesan atau komponen lain jika data kosong
+    return <div className="block sm:w-[97%] w-[90%] mb-5 mx-auto p-6 bg-gray-100 border border-black rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700 overflow-y-auto">
+      <div className="flex justify-center items-center gap-2">
+          <h1 className="sm:text-2xl text-md text-black font-semibold">Tidak ada data yang ditemukan</h1>
+          <svg className="w-6 h-6" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+            <path stroke="black" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" />
+          </svg>
+      </div>
+      <div className="flex flex-row justify-between items-center mt-5">
+      <span className="text-sm text-gray-700 dark:text-gray-400">
+        {surat.length > 0 ? (
+          <>
+            Showing <span className="font-semibold text-gray-900 dark:text-white">{indexOfFirstItem + 1}</span> to <span className="font-semibold text-gray-900 dark:text-white">{Math.min(indexOfLastItem, surat.length)}</span> of <span className="font-semibold text-gray-900 dark:text-white">{surat.length}</span> Entries
+          </>
+        ) : (
+          <span className="font-semibold text-gray-900 dark:text-white">No Entries Available</span>
+        )}
+      </span>
+      <div className="inline-flex gap-2 mt-2 xs:mt-0">
+        {currentPage > 1 && (
+          <button onClick={() => paginate(currentPage - 1)} className="flex items-center justify-center px-4 h-10 text-base border font-medium text-white bg-gray-800 rounded hover:bg-gray-900 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
+            <svg className="w-3.5 h-3.5 me-2 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
+              <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 5H1m0 0 4 4M1 5l4-4" />
+            </svg>
+            Sebelumnya
+          </button>
+        )}
+        {indexOfLastItem < surat.length && (
+          <button onClick={() => paginate(currentPage + 1)} className="flex items-center justify-center px-4 h-10 text-base font-medium border text-white bg-gray-800 rounded hover:bg-gray-900 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
+            Berikutnya
+            <svg className="w-3.5 h-3.5 ms-2 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
+              <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M1 5h12m0 0L9 1m4 4L9 9" />
+            </svg>
+          </button>
+        )}
+      </div>
+    </div>
+  </div>;
   }
 
   return (
