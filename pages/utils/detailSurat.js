@@ -1,6 +1,7 @@
 import React from 'react';
 
 const DetailSurat = ({ data }) => {
+  console.log(data);
   if (!data) {
     return <p>Data surat tidak tersedia</p>;
   }

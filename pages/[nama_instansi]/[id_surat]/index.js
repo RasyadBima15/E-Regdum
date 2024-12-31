@@ -40,13 +40,13 @@ const Surat = () => {
               // Bentuk data seperti yang diminta
               const formattedSurat = {
                 id: id_surat,
-                no_surat: data.no_surat || '',
+                no_tanggal_surat: data.no_tanggal_surat || '',
                 nama_instansi: data.nama_instansi || '',
                 tanggal_diterima: data.tanggal_diterima || '',
                 hal: data.hal || '',
-                nomor_laporan_polisi: data.nomor_laporan_polisi || '',
+                nomor_tanggal_lp: data.nomor_tanggal_lp || '',
+                nama_pengadu: data.nama_pengadu || '',
                 disposisi_ka_ir: data.disposisi_ka_ir || '',
-                disposisi_ksb_dumasanwas: data.disposisi_ksb_dumasanwas || '',
                 tindak_lanjut: data.tindak_lanjut || '',
                 jawaban: data.jawaban || '',
                 status_penanganan: data.status_penanganan || '',

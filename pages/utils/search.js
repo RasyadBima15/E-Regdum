@@ -1,10 +1,10 @@
 import { useState } from "react";
 import Link from "next/link";
-import { getDatabase, ref, onValue, query, orderByChild, equalTo } from 'firebase/database';
+import { getDatabase, ref, onValue } from 'firebase/database';
 import firebaseApp from '@/firebase';
 
 const Search = ({nama_instansi = undefined, setSurat, setLoading, }) => {
-  const [selectedCategory, setSelectedCategory] = useState("Nomor Surat");
+  const [selectedCategory, setSelectedCategory] = useState("Nomor dan Tanggal Surat");
   const [searchQuery, setSearchQuery] = useState("");
   const [dropdownOpen, setDropdownOpen] = useState(false);
 
@@ -12,13 +12,13 @@ const Search = ({nama_instansi = undefined, setSurat, setLoading, }) => {
 
   // Daftar kategori dropdown
   const categories = [
-    "Nomor Surat",
+    "Nomor dan Tanggal Surat",
     "Nama Instansi",
     "Tanggal Diterima",
     "Hal",
-    "Nomor Laporan Polisi",
-    "Disposisi KA / IR",
-    "Disposisi KSB Dumasanwas",
+    "No dan Tanggal LP",
+    "Nama Pengadu",
+    "Disposisi KA/IR",
     "Tindak Lanjut",
     "Jawaban",
     "Status Penanganan",
@@ -38,23 +38,31 @@ const Search = ({nama_instansi = undefined, setSurat, setLoading, }) => {
     setDropdownOpen(false);
   };
 
+  const formatTanggal = (tanggal) => {
+    // Mengurai tanggal dalam format YYYY-MM-DD
+    const [year, month, day] = tanggal.split('-');  // Pisahkan berdasarkan '-'
+    // Format tanggal ke dalam bentuk DD-MM-YYYY
+    const formattedTanggal = `${day}-${month}-${year}`;
+    return formattedTanggal;
+};
+
   // Optional: Helper function to standardize field names
   const formatField = (field) => {
     switch (field) {
       case "Nama Instansi":
         return "nama_instansi";
-      case "Nomor Surat":
-        return "no_surat";
+      case "Nomor dan Tanggal Surat":
+        return "no_tanggal_surat";
       case "Tanggal Diterima":
         return "tanggal_diterima";
       case "Hal":
         return "hal";
-      case "Nomor Laporan Polisi":
-        return "nomor_laporan_polisi";
-      case "Disposisi KA / IR":
+      case "No dan Tanggal LP":
+        return "nomor_tanggal_lp";
+      case "Nama Pengadu":
+        return "nama_pengadu";
+      case "Disposisi KA/IR":
         return "disposisi_ka_ir";
-      case "Disposisi KSB Dumasanwas":
-        return "disposisi_ksb_dumasanwas";
       case "Tindak Lanjut":
         return "tindak_lanjut";
       case "Jawaban":
@@ -73,54 +81,53 @@ const Search = ({nama_instansi = undefined, setSurat, setLoading, }) => {
   const handleSearch = async (e) => {
     e.preventDefault();
     if (!searchQuery.trim()) return;
-  
-    setLoading(true); // Mulai loading indikator
-    
+
+    setLoading(true);
+
     // Convert query ke lowercase untuk pencarian case-insensitive
     const searchQueryLower = searchQuery.toLowerCase();
-  
+
     // Field yang dipilih, diformat dengan fungsi formatField
     const formattedField = formatField(selectedCategory);
-  
-    // Referensi database
+
     const suratRef = ref(db);
-  
-    // Mengambil semua data dari Firebase
+
     const unsubscribe = onValue(
       suratRef,
       (snapshot) => {
         if (snapshot.exists()) {
           const data = snapshot.val();
-  
-          // Transformasikan objek data menjadi array
+
           const formattedData = Object.keys(data).map((key) => ({
             id: key,
             ...data[key],
           }));
-  
-          // Filter data berdasarkan substring match
+
           const filteredData = formattedData.filter((item) => {
-            // Ambil nilai field yang relevan, pastikan menjadi string, dan diubah ke lowercase
             const fieldValue = (item[formattedField] || "").toString().toLowerCase();
+
+            if (selectedCategory === "Tanggal Diterima") {
+              // Jika kategori adalah "Tanggal Diterima", format tanggalnya
+              const formattedDate = item['tanggal_diterima']
+              return formattedDate.includes(formatTanggal(searchQueryLower)); // Substring matching
+            }
             return fieldValue.includes(searchQueryLower); // Substring matching
           });
-  
-          setSurat(filteredData); // Set hasil pencarian ke state
+
+          setSurat(filteredData);
         } else {
-          setSurat([]); // Jika tidak ada data ditemukan
+          setSurat([]);
         }
-        setLoading(false); // Selesai loading
+        setLoading(false);
       },
       (error) => {
         console.error("Error during search:", error);
-        setLoading(false); // Pastikan indikator loading berhenti meskipun ada error
+        setLoading(false);
       }
     );
-  
-    // Hentikan listener saat fungsi selesai (opsional jika digunakan sebagai live query)
+
     return () => unsubscribe();
   };
-  
   
   return (
     <div className="flex flex-col sm:flex-row justify-center">

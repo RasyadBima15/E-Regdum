@@ -68,8 +68,8 @@ const Instansi = () => {
   }, [db, nama_instansi]);
 
   const header = [
-    'No Surat', 'Nama Instansi', 'Tanggal Diterima', 'Hal',
-    'Nomor Laporan Polisi', 'Disposisi Ka IR', 'Disposisi KSB Dumasanwas', 
+    'Nomor dan Tanggal Surat', 'Nama Instansi', 'Tanggal Diterima', 'Hal',
+    'No dan Tanggal LP', 'Nama Pengadu', 'Disposisi Ka IR', 
     'Tindak Lanjut', 'Jawaban', 'Status Penanganan', 'Petugas', 'Zona'
   ];
 
@@ -82,13 +82,13 @@ const Instansi = () => {
         }
         // Map the surat data to array of arrays (assuming surat is an array of objects)
         const suratRows = surat.map((item) => [
-          item['no_surat'],
+          item['no_tanggal_surat'],
           item['nama_instansi'],
           item['tanggal_diterima'],
           item['hal'],
-          item['nomor_laporan_polisi'],
+          item['nomor_tanggal_lp'],
+          item['nama_pengadu'],
           item['disposisi_ka_ir'],
-          item['disposisi_ksb_dumasanwas'],
           item['tindak_lanjut'],
           item['jawaban'],
           item['status_penanganan'],

@@ -99,13 +99,13 @@ const Table = ( {nama_instansi = '', surat = [], isLoading = false} ) => {
                 <table className="w-full text-sm text-left rtl:text-right text-black dark:text-gray-400">
                   <thead className="text-sm border-b border-black text-black uppercase dark:bg-gray-700 dark:text-gray-400">
                     <tr>
-                      <th scope="col" className="px-6 py-3">Nomor Surat</th>
+                      <th scope="col" className="px-6 py-3">Nomor dan Tanggal Surat</th>
                       <th scope="col" className="px-6 py-3">Nama Instansi</th>
                       <th scope="col" className="px-6 py-3">Tanggal Diterima</th>
                       <th scope="col" className="px-6 py-3">Hal</th>
-                      <th scope="col" className="px-6 py-3">Nomor Laporan Polisi</th>
+                      <th scope="col" className="px-6 py-3">No dan Tanggal LP</th>
+                      <th scope="col" className="px-6 py-3">Nama Pengadu</th>
                       <th scope="col" className="px-6 py-3">Disposisi KA / IR</th>
-                      <th scope="col" className="px-6 py-3">Disposisi KSB Dumasanwas</th>
                       <th scope="col" className="px-6 py-3">Tindak Lanjut</th>
                       <th scope="col" className="px-6 py-3">Jawaban</th>
                       <th scope="col" className="px-6 py-3">Status Penanganan</th>
@@ -117,13 +117,13 @@ const Table = ( {nama_instansi = '', surat = [], isLoading = false} ) => {
                   <tbody>
                     {currentItems.map((item) => (
                       <tr key={item.id} className="bg-transparent border-b border-black dark:bg-gray-800 dark:border-gray-700">
-                        <td className="px-6 py-4">{item.no_surat}</td>
+                        <td className="px-6 py-4">{item.no_tanggal_surat}</td>
                         <td className="px-6 py-4">{item.nama_instansi}</td>
                         <td className="px-6 py-4">{item.tanggal_diterima}</td>
                         <td className="px-6 py-4">{item.hal}</td>
-                        <td className="px-6 py-4">{item.nomor_laporan_polisi}</td>
+                        <td className="px-6 py-4">{item.nomor_tanggal_lp}</td>
+                        <td className="px-6 py-4">{item.nama_pengadu}</td>
                         <td className="px-6 py-4">{item.disposisi_ka_ir}</td>
-                        <td className="px-6 py-4">{item.disposisi_ksb_dumasanwas}</td>
                         <td className="px-6 py-4">{item.tindak_lanjut}</td>
                         <td className="px-6 py-4">{item.jawaban}</td>
                         <td className="px-6 py-4">{item.status_penanganan}</td>
