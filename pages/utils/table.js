@@ -22,7 +22,7 @@ const Table = ( {nama_instansi, surat, isLoading} ) => {
   // Hitung item yang akan ditampilkan berdasarkan halaman saat ini
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-  const currentItems = surat.slice(indexOfFirstItem, indexOfLastItem);
+  const currentItems = (surat || []).slice(indexOfFirstItem, indexOfLastItem);
 
   // Fungsi untuk mengubah halaman
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
@@ -38,6 +38,10 @@ const Table = ( {nama_instansi, surat, isLoading} ) => {
       toast.error("Gagal menghapus surat:", error);
     }
   };
+
+  if (!surat || surat.length === 0) {
+    return <div>No data available</div>; // Tampilkan pesan atau komponen lain jika data kosong
+  }
 
   return (
       <>
