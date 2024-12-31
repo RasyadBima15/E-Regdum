@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { getDatabase, ref, remove } from "firebase/database";
 import { toast } from 'react-toastify';
 
-const Table = ( {nama_instansi, surat, isLoading} ) => {
+const Table = ( {nama_instansi = '', surat = [], isLoading = false} ) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [currentItemId, setCurrentItemId] = useState(null);
   const openModal = (id) => {
@@ -16,8 +16,13 @@ const Table = ( {nama_instansi, surat, isLoading} ) => {
   const itemsPerPage = 10;
 
   useEffect(() => {
-    setLoading(isLoading);
-  }, [isLoading]);
+    if (isLoading) {
+      setLoading(true);
+    } else {
+      setLoading(false);
+    }
+  }, [isLoading, surat]);
+  
       
   // Hitung item yang akan ditampilkan berdasarkan halaman saat ini
   const indexOfLastItem = currentPage * itemsPerPage;
@@ -39,7 +44,7 @@ const Table = ( {nama_instansi, surat, isLoading} ) => {
     }
   };
 
-  if (!surat || surat.length === 0) {
+  if (!Array.isArray(surat) || surat.length === 0) {
     return <div className="block sm:w-[97%] w-[90%] mb-5 mx-auto p-6 bg-gray-100 border border-black rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700 overflow-y-auto">
       <div className="flex justify-center items-center gap-2">
           <h1 className="sm:text-2xl text-md text-black font-semibold">Tidak ada data yang ditemukan</h1>
