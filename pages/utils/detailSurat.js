@@ -1,6 +1,9 @@
 import React from 'react';
 
 const DetailSurat = ({ data }) => {
+  if (!data) {
+    return <p>Data surat tidak tersedia</p>;
+  }
   return (
     <div className="border border-gray-300 rounded-md bg-[#f8f9fa]">
       {Object.entries(data)
