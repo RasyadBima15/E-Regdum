@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable @next/next/no-img-element */
 import React, { useState, useEffect } from 'react';
-import { signIn } from './auth/firebaseAuth';
+import { signIn } from '../helper/auth/firebaseAuth';
 import { toast } from 'react-toastify';
 import { useRouter } from 'next/router';
 import { getAuth, onAuthStateChanged } from "firebase/auth";

@@ -2,7 +2,7 @@
 /* eslint-disable @next/next/no-html-link-for-pages */
 import React, { useState } from 'react';
 import { useRouter } from 'next/router';
-import { logout } from '../auth/firebaseAuth';
+import { logout } from '../../helper/auth/firebaseAuth';
 import { toast } from 'react-toastify';
 
 const Navbar = () => {
