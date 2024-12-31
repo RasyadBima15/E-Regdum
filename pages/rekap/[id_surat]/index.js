@@ -30,37 +30,60 @@ const RekapSurat = () => {
 
   const { id_surat } = router.query;
 
-    useEffect(() => {
-        if (id_surat && !isCheckingAuth) {
-          const suratRef = ref(db, `${id_surat}`); // Path ke surat berdasarkan ID
-          get(suratRef)
-            .then((snapshot) => {
-              if (snapshot.exists()) {
-                const data = snapshot.val();
-                // Bentuk data seperti yang diminta
-                const formattedSurat = {
-                  id: id_surat,
-                  no_surat: data.no_surat || '',
-                  nama_instansi: data.nama_instansi || '',
-                  tanggal_diterima: data.tanggal_diterima || '',
-                  hal: data.hal || '',
-                  nomor_laporan_polisi: data.nomor_laporan_polisi || '',
-                  disposisi_ka_ir: data.disposisi_ka_ir || '',
-                  disposisi_ksb_dumasanwas: data.disposisi_ksb_dumasanwas || '',
-                  tindak_lanjut: data.tindak_lanjut || '',
-                  jawaban: data.jawaban || '',
-                  status_penanganan: data.status_penanganan || '',
-                  zona: data.zona || '',
-                  petugas: data.petugas || '',
-                };
-                setSurat(formattedSurat);
-              }
-            })
-            .catch((error) => {
-              toast.error('Error fetching surat:', error);
-            })
-        }
-    }, [router.query, isCheckingAuth, db, id_surat]);
+  useEffect(() => {
+    if (id_surat && !isCheckingAuth) {
+      const suratRef = ref(db, `${id_surat}`);
+      get(suratRef)
+        .then((snapshot) => {
+          if (snapshot.exists()) {
+            const data = snapshot.val();
+            const formattedSurat = {
+              id: id_surat,
+              no_surat: data.no_surat || '',
+              nama_instansi: data.nama_instansi || '',
+              tanggal_diterima: data.tanggal_diterima || '',
+              hal: data.hal || '',
+              nomor_laporan_polisi: data.nomor_laporan_polisi || '',
+              disposisi_ka_ir: data.disposisi_ka_ir || '',
+              disposisi_ksb_dumasanwas: data.disposisi_ksb_dumasanwas || '',
+              tindak_lanjut: data.tindak_lanjut || '',
+              jawaban: data.jawaban || '',
+              status_penanganan: data.status_penanganan || '',
+              zona: data.zona || '',
+              petugas: data.petugas || '',
+            };
+            setSurat(formattedSurat);
+          } else {
+            toast.error('Surat tidak ditemukan.');
+          }
+        })
+        .catch((error) => {
+          console.error('Error fetching surat:', error);
+          toast.error('Error fetching surat.');
+        });
+    }
+  }, [id_surat, isCheckingAuth, db]);
+
+  if (isCheckingAuth) {
+    return <div>Memeriksa autentikasi...</div>;
+  }
+  
+  if (surat === null) {
+    return <div>Memuat data surat...</div>;
+  }
+  
+  if (id_surat !== surat.id) {
+    return <div>Surat tidak valid.</div>;
+  }
+  
+  if (!surat) {
+    return (
+      <div>
+        <h1>Surat Tidak Ditemukan</h1>
+        <p>Pastikan surat dengan ID {id_surat} benar dan tersedia di sistem.</p>
+      </div>
+    );
+  }  
 
   if (!isCheckingAuth && surat !== null && id_surat == surat.id) {
     return (
