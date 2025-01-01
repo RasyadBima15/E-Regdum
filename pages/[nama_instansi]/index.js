@@ -69,8 +69,8 @@ const Instansi = () => {
 
   const header = [
     'Nomor dan Tanggal Surat', 'Nama Instansi', 'Tanggal Diterima', 'Hal',
-    'No dan Tanggal LP', 'Nama Pengadu', 'Disposisi Ka IR', 
-    'Tindak Lanjut', 'Jawaban', 'Status Penanganan', 'Petugas', 'Zona'
+    'No dan Tanggal LP', 'Pelapor', 'SATWIL/KER Terlapor', 
+    'Disposisi KA/IR', 'Jawaban', 'Status Penanganan', 'Petugas', 'Zona'
   ];
 
   // Fungsi untuk mengambil data dan membuat file Excel
@@ -87,9 +87,9 @@ const Instansi = () => {
           item['tanggal_diterima'],
           item['hal'],
           item['nomor_tanggal_lp'],
-          item['nama_pengadu'],
+          item['pelapor'],
+          item['satwil_ker_terlapor'],
           item['disposisi_ka_ir'],
-          item['tindak_lanjut'],
           item['jawaban'],
           item['status_penanganan'],
           item['petugas'],

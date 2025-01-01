@@ -1,7 +1,19 @@
 import React from 'react';
 
+const formatKey = (key) => {
+  switch (key) {
+    case 'nomor_tanggal_lp':
+      return 'Nomor Tanggal LP';
+    case 'disposisi_ka_ir':
+      return 'Disposisi KA/IR';
+    case 'satwil_ker_terlapor':
+      return 'SATWIL/KER Terlapor';
+    default:
+      return key.replace(/_/g, ' '); // Ganti underscore dengan spasi
+  }
+};
+
 const DetailSurat = ({ data }) => {
-  console.log(data);
   if (!data) {
     return <p>Data surat tidak tersedia</p>;
   }
@@ -16,7 +28,7 @@ const DetailSurat = ({ data }) => {
           >
             {/* Key sebagai label */}
             <div className="font-bold text-black capitalize mb-1">
-              {key.replace(/_/g, ' ')}
+              {formatKey(key)}
             </div>
             {/* Value di bawah label */}
             <div className="text-black break-words">

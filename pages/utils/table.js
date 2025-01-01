@@ -104,9 +104,9 @@ const Table = ( {nama_instansi = '', surat = [], isLoading = false} ) => {
                       <th scope="col" className="px-6 py-3">Tanggal Diterima</th>
                       <th scope="col" className="px-6 py-3">Hal</th>
                       <th scope="col" className="px-6 py-3">No dan Tanggal LP</th>
-                      <th scope="col" className="px-6 py-3">Nama Pengadu</th>
+                      <th scope="col" className="px-6 py-3">Pelapor</th>
+                      <th scope="col" className="px-6 py-3">SATWIL/KER Terlapor</th>
                       <th scope="col" className="px-6 py-3">Disposisi KA / IR</th>
-                      <th scope="col" className="px-6 py-3">Tindak Lanjut</th>
                       <th scope="col" className="px-6 py-3">Jawaban</th>
                       <th scope="col" className="px-6 py-3">Status Penanganan</th>
                       <th scope="col" className="px-6 py-3">Zona</th>
@@ -122,9 +122,9 @@ const Table = ( {nama_instansi = '', surat = [], isLoading = false} ) => {
                         <td className="px-6 py-4">{item.tanggal_diterima}</td>
                         <td className="px-6 py-4">{item.hal}</td>
                         <td className="px-6 py-4">{item.nomor_tanggal_lp}</td>
-                        <td className="px-6 py-4">{item.nama_pengadu}</td>
+                        <td className="px-6 py-4">{item.pelapor}</td>
+                        <td className="px-6 py-4">{item.satwil_ker_terlapor}</td>
                         <td className="px-6 py-4">{item.disposisi_ka_ir}</td>
-                        <td className="px-6 py-4">{item.tindak_lanjut}</td>
                         <td className="px-6 py-4">{item.jawaban}</td>
                         <td className="px-6 py-4">{item.status_penanganan}</td>
                         <td className="px-6 py-4">{item.zona}</td>

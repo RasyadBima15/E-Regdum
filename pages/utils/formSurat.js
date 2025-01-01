@@ -27,9 +27,9 @@ const FormSurat = ({ nama_instansi = undefined, surat = {}, mode = 'input' }) =>
           tanggal_diterima: mode === 'edit' ? formatTanggal(surat.tanggal_diterima) : '',
           hal: mode === 'edit' ? surat.hal : '',
           nomor_tanggal_lp: mode === 'edit' ? surat.nomor_tanggal_lp : '',
-          nama_pengadu: mode === 'edit' ? surat.nama_pengadu : '',
+          pelapor: mode === 'edit' ? surat.pelapor : '',
+          satwil_ker_terlapor: mode === 'edit' ? surat.satwil_ker_terlapor : '',
           disposisi_ka_ir: mode === 'edit' ? surat.disposisi_ka_ir : '',
-          tindak_lanjut: mode === 'edit' ? surat.tindak_lanjut : '',
           jawaban: mode === 'edit' ? surat.jawaban : 'Sudah Dijawab',
           status_penanganan: mode === 'edit' ? surat.status_penanganan : '',
           zona: mode === 'edit' ? surat.zona : 'Zona 1',
@@ -146,18 +146,33 @@ const FormSurat = ({ nama_instansi = undefined, surat = {}, mode = 'input' }) =>
 
           {/* Field nama_pengadu */}
           <div>
-            <label htmlFor="nama_pengadu" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nama Pengadu</label>
+            <label htmlFor="pelapor" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Pelapor</label>
             <Field
               type="text"
-              name="nama_pengadu"
-              id="nama_pengadu"
-              placeholder="Masukkan nama pengadu"
+              name="pelapor"
+              id="pelapor"
+              placeholder="Masukkan nama pelapor"
               required
               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
             />
           </div>
 
           {/* Field disposisi_ksb_dumasanwas */}
+          <div>
+            <label htmlFor="satwil_ker_terlapor" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+              SATWIL/KER Terlapor
+            </label>
+            <Field
+              type="text"
+              name="satwil_ker_terlapor"
+              id="satwil_ker_terlapor"
+              placeholder="Masukkan SATWIL/KER Terlapor"
+              required
+              className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
+            />
+          </div>
+
+          {/* Field tindak_lanjut */}
           <div>
             <label htmlFor="disposisi_ka_ir" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
               Disposisi KA/IR
@@ -166,21 +181,6 @@ const FormSurat = ({ nama_instansi = undefined, surat = {}, mode = 'input' }) =>
               type="text"
               name="disposisi_ka_ir"
               id="disposisi_ka_ir"
-              placeholder="Masukkan disposisi KA/IR"
-              required
-              className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
-            />
-          </div>
-
-          {/* Field tindak_lanjut */}
-          <div>
-            <label htmlFor="tindak_lanjut" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
-              Tindak Lanjut
-            </label>
-            <Field
-              type="text"
-              name="tindak_lanjut"
-              id="tindak_lanjut"
               placeholder="Masukkan tindak lanjut"
               required
               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
