@@ -17,9 +17,9 @@ const Search = ({nama_instansi = undefined, setSurat, setLoading, }) => {
     "Tanggal Diterima",
     "Hal",
     "No dan Tanggal LP",
-    "Nama Pengadu",
+    "Pelapor",
+    "SATKER/WIL Terlapor",
     "Disposisi KA/IR",
-    "Tindak Lanjut",
     "Jawaban",
     "Status Penanganan",
     "Zona",
@@ -59,12 +59,12 @@ const Search = ({nama_instansi = undefined, setSurat, setLoading, }) => {
         return "hal";
       case "No dan Tanggal LP":
         return "nomor_tanggal_lp";
-      case "Nama Pengadu":
-        return "nama_pengadu";
+      case "Pelapor":
+        return "pelapor";
+      case "SATKER/WIL Terlapor":
+        return "satker_wil_terlapor";
       case "Disposisi KA/IR":
         return "disposisi_ka_ir";
-      case "Tindak Lanjut":
-        return "tindak_lanjut";
       case "Jawaban":
         return "jawaban";
       case "Status Penanganan":
