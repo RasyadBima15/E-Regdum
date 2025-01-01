@@ -69,7 +69,7 @@ const Instansi = () => {
 
   const header = [
     'Nomor dan Tanggal Surat', 'Nama Instansi', 'Tanggal Diterima', 'Hal',
-    'No dan Tanggal LP', 'Pelapor', 'SATWIL/KER Terlapor', 
+    'No dan Tanggal LP', 'Pelapor', 'SATKER/WIL Terlapor', 
     'Disposisi KA/IR', 'Jawaban', 'Status Penanganan', 'Petugas', 'Zona'
   ];
 

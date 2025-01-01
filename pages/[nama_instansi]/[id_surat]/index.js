@@ -46,7 +46,7 @@ const Surat = () => {
                 hal: data.hal || '',
                 nomor_tanggal_lp: data.nomor_tanggal_lp || '',
                 pelapor: data.pelapor || '',
-                satwil_ker_terlapor: data.satwil_ker_terlapor || '',
+                satker_wil_terlapor: data.satker_wil_terlapor || '',
                 disposisi_ka_ir: data.disposisi_ka_ir || '',
                 jawaban: data.jawaban || '',
                 status_penanganan: data.status_penanganan || '',

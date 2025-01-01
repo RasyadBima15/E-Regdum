@@ -82,7 +82,7 @@ const Rekap = () => {
         item['hal'],
         item['nomor_tanggal_lp'],
         item['pelapor'],
-        item['satwil_ker_terlapor'],
+        item['satker_wil_terlapor'],
         item['disposisi_ka_ir'],
         item['jawaban'],
         item['status_penanganan'],

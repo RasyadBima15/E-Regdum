@@ -105,7 +105,7 @@ const Table = ( {nama_instansi = '', surat = [], isLoading = false} ) => {
                       <th scope="col" className="px-6 py-3">Hal</th>
                       <th scope="col" className="px-6 py-3">No dan Tanggal LP</th>
                       <th scope="col" className="px-6 py-3">Pelapor</th>
-                      <th scope="col" className="px-6 py-3">SATWIL/KER Terlapor</th>
+                      <th scope="col" className="px-6 py-3">SATKER/WIL Terlapor</th>
                       <th scope="col" className="px-6 py-3">Disposisi KA / IR</th>
                       <th scope="col" className="px-6 py-3">Jawaban</th>
                       <th scope="col" className="px-6 py-3">Status Penanganan</th>
@@ -123,7 +123,7 @@ const Table = ( {nama_instansi = '', surat = [], isLoading = false} ) => {
                         <td className="px-6 py-4">{item.hal}</td>
                         <td className="px-6 py-4">{item.nomor_tanggal_lp}</td>
                         <td className="px-6 py-4">{item.pelapor}</td>
-                        <td className="px-6 py-4">{item.satwil_ker_terlapor}</td>
+                        <td className="px-6 py-4">{item.satker_wil_terlapor}</td>
                         <td className="px-6 py-4">{item.disposisi_ka_ir}</td>
                         <td className="px-6 py-4">{item.jawaban}</td>
                         <td className="px-6 py-4">{item.status_penanganan}</td>

@@ -6,8 +6,8 @@ const formatKey = (key) => {
       return 'Nomor Tanggal LP';
     case 'disposisi_ka_ir':
       return 'Disposisi KA/IR';
-    case 'satwil_ker_terlapor':
-      return 'SATWIL/KER Terlapor';
+    case 'satker_wil_terlapor':
+      return 'SATKER/WIL Terlapor';
     default:
       return key.replace(/_/g, ' '); // Ganti underscore dengan spasi
   }

@@ -28,7 +28,7 @@ const FormSurat = ({ nama_instansi = undefined, surat = {}, mode = 'input' }) =>
           hal: mode === 'edit' ? surat.hal : '',
           nomor_tanggal_lp: mode === 'edit' ? surat.nomor_tanggal_lp : '',
           pelapor: mode === 'edit' ? surat.pelapor : '',
-          satwil_ker_terlapor: mode === 'edit' ? surat.satwil_ker_terlapor : '',
+          satker_wil_terlapor: mode === 'edit' ? surat.satker_wil_terlapor : '',
           disposisi_ka_ir: mode === 'edit' ? surat.disposisi_ka_ir : '',
           jawaban: mode === 'edit' ? surat.jawaban : 'Sudah Dijawab',
           status_penanganan: mode === 'edit' ? surat.status_penanganan : '',
@@ -159,13 +159,13 @@ const FormSurat = ({ nama_instansi = undefined, surat = {}, mode = 'input' }) =>
 
           {/* Field disposisi_ksb_dumasanwas */}
           <div>
-            <label htmlFor="satwil_ker_terlapor" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
-              SATWIL/KER Terlapor
+            <label htmlFor="satker_wil_terlapor" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+              SATKER/WIL Terlapor
             </label>
             <Field
               type="text"
-              name="satwil_ker_terlapor"
-              id="satwil_ker_terlapor"
+              name="satker_wil_terlapor"
+              id="satker_wil_terlapor"
               placeholder="Masukkan SATWIL/KER Terlapor"
               required
               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
